@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Reina Hermosa ❤️‍🩹</title>
+    <style>
+        :root {
+            --bg-color: #fff0f5;
+            --accent-color: #e91e8c;
+            --accent-hover: #c0176e;
+            --text-color: #4a0030;
+            --card-bg: #ffffff;
+            --border-color: #ffb3d1;
+        }
+
+        body.dark-mode {
+            --bg-color: #2c1624;
+            --accent-color: #ff6fa8;
+            --accent-hover: #ff9ebe;
+            --text-color: #fff0f5;
+            --card-bg: #422036;
+            --border-color: #663353;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            font-size: 28px;
+            margin: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        .top-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-control {
+            background-color: #f8c8dc;
+            color: #4a0030;
+            border: 2px solid var(--border-color);
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-control:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            justify-content: center;
+            max-width: 950px;
+            margin-bottom: 20px;
+            background-color: #fff0f5;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .tab-btn {
+            background-color: #f8c8dc;
+            color: #4a0030;
+            border: 1px solid #b0457a;
+            padding: 6px 10px;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .main-container {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            padding: 30px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            box-sizing: border-box;
+            min-height: 400px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .display-box {
+            border: 1px solid #ccc;
+            padding: 25px;
+            text-align: center;
+            font-style: italic;
+            background: #fffbfd;
+            color: var(--accent-color);
+            font-size: 18px;
+            margin: 20px 0;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        body.dark-mode .display-box {
+            background: #4d263f;
+            border-color: #663353;
+        }
+
+        .btn-action {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .btn-action:hover {
+            background-color: var(--accent-hover);
+        }
+
+        textarea, select, input[type="file"], input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .days-number {
+            font-size: 70px;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-align: center;
+            margin: 15px 0;
+            transition: color 0.3s ease;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .photo-gallery .photo-item {
+            position: relative;
+            border: 1px solid var(--border-color);
+            background: #eee;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .btn-delete-photo {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            background: rgba(233, 30, 140, 0.85);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 11px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .outfit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .outfit-card {
+            border: 2px dashed var(--border-color);
+            padding: 10px;
+            text-align: center;
+            background: var(--bg-color);
+            border-radius: 4px;
+        }
+
+        .outfit-card img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 4px;
+            background: #fff8fb;
+        }
+
+        .outfit-label {
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 8px;
+            color: var(--text-color);
+        }
+
+        .wardrobe-list {
+            max-height: 110px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            margin: 12px 0;
+            font-size: 13px;
+            background: #fffcfd;
+        }
+
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .dice {
+            width: 70px;
+            height: 70px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(233,30,140,0.3);
+            transition: transform 0.1s ease;
+        }
+
+        .dinamic-list-container {
+            margin-top: 15px;
+            max-height: 250px;
+            overflow-y: auto;
+            border: 1px dashed var(--border-color);
+            padding: 10px;
+            background: #fffcfd;
+            border-radius: 4px;
+        }
+        body.dark-mode .dinamic-list-container {
+            background: #422036;
+        }
+
+        .list-item-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        .btn-delete-item {
+            background: none;
+            border: none;
+            color: #ff6fa8;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .btn-delete-item:hover {
+            color: var(--accent-color);
+        }
+
+        .input-inline-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 12px;
+            opacity: 0.7;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="header-animated-title">❤️‍🩹 Para Mi Reina Hermosa ❤️‍🩹</h1>
+    </header>
+
+    <div class="top-controls">
+        <button class="btn-control" id="btn-audio-global" onclick="controlarMusicaGlobal()">🎵 Música OFF</button>
+        <button class="btn-control" onclick="forzarSiguientePestana()">⏭️ Siguiente</button>
+        <button class="btn-control" onclick="conmutarModoOscuro()">👁️‍عون Tema</button>
+    </div>
+
+    <input type="file" id="input-audio-local" accept="audio/*" style="display: none;">
+    <audio id="reproductor-core" loop></audio>
+
+    <div class="tabs-nav">
+        <button class="tab-btn active" onclick="rutearPestana(event, 'mensajes')">📯 Mensajes</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'carta')">💍 Carta</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'diario')">📖 Diario</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'dias')">📅 Días</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'cuenta')">⏳ Cuenta</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'fotos')">🖼️ Fotos</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'outfits')">👗 Outfits</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'ruleta')">🎡 Ruleta</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'vor')">🎲 V o R</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'deseos')">🧜 Deseos</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'momentos')">🍿 Momentos</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'canciones')">🎵 Canciones</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'animo')">☯️ Ánimo</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'besos')">💋 Besos</button>
+        <button class="tab-btn" onclick="rutearPestana(event, 'sorpresa')">🎁 Sorpresa</button>
+    </div>
+
+    <div class="main-container">
+
+        <!-- 1. PESTAÑA: MENSAJES -->
+        <div id="mensajes" class="tab-content active">
+            <p style="text-align: center; margin: 0; font-size: 15px;">Un message para ti:</p>
+            <div class="display-box" id="caja-mensajes-dinamica">Cada día contigo es mi favorito ❤️‍🩹</div>
+            <button class="btn-action" onclick="rotarMensajeAmor()">✨ Otro mensaje</button>
+            
+            <p style="text-align: center; margin-top: 25px; margin-bottom: 5px; font-size: 15px;">Escríbele algo especial:</p>
+            <textarea id="input-texto-rapido" rows="3" placeholder="Escribe aquí un pensamiento rápido para guardar en el diario..."></textarea>
+            <button class="btn-action" style="background-color: #ff6fa8;" onclick="guardarMensajeAlDiario()">❤️‍🩹 Guardar en diario</button>
+        </div>
+
+        <!-- 2. PESTAÑA: CARTA -->
+        <div id="carta" class="tab-content">
+            <h3 style="text-align: center; color: var(--accent-color);">Mi Carta de Amor 📜</h3>
+            <div id="vista-carta-amor" style="line-height: 1.8; font-style: italic; white-space: pre-line; background: #fffcfd; padding: 20px; border: 1px dashed var(--border-color); color: #4a0030; border-radius:4px; min-height: 100px;"></div>
+            <hr style="border: 0; border-top: 1px dashed var(--border-color); margin: 30px 0;">
+            <p style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">✍️ Espacio del Creador (Cambia la carta aquí cada día):</p>
+            <textarea id="textarea-carta-editable" rows="6" placeholder="Escribe la carta de hoy para tu reina..."></textarea>
+            <button class="btn-action" style="background-color: #ff6fa8;" onclick="guardarCartaDelDia()">💍 Actualizar Carta del Día</button>
+        </div>
+
+        <!-- 3. PESTAÑA: DIARIO -->
+        <div id="diario" class="tab-content">
+            <h3 style="text-align: center; margin-top:0;">Nuestro Diario de Amor ❤️‍🩹</h3>
+            <div id="contenedor-logs-diario" style="border: 2px solid var(--border-color); padding: 15px; background: #fffbfd; height: 220px; overflow-y: auto; font-family: 'Georgia', serif; border-radius:4px; line-height:1.6;"></div>
+            <button class="btn-action" onclick="limpiarRegistrosDiario()">🔄 Reiniciar Diario</button>
+        </div>
+
+        <!-- 4. PESTAÑA: DÍAS -->
+        <div id="dias" class="tab-content">
+            <p style="text-align: center; margin: 0; font-size: 16px;">Llevamos juntos:</p>
+            <div class="days-number" id="lbl-pulsar-dias">0</div>
+            <p style="text-align: center; font-weight: bold; font-size: 18px; color: #b0457a;" id="lbl-desglose-calendario">0 años · 0 meses · 0 días</p>
+            <p style="text-align: center; font-size: 13px; opacity: 0.8; margin-top: 20px;">Desde el 18/08/2024 hasta hoy.<br>¡Cada día contigo es un regalo! 🎁</p>
+        </div>
+
+        <!-- 5. PESTAÑA: CUENTA -->
+        <div id="cuenta" class="tab-content">
+            <h3 style="text-align: center;">⏳ Nuestras Metas y Cuentas Regresivas</h3>
+            <p style="font-size:14px; margin:0;">Agrega un evento o meta importante para ver cuántos días faltan:</p>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+                <input type="text" id="input-meta-nombre" placeholder="Ej: Nuestro próximo viaje juntos... ✈️">
+                <div class="input-inline-group" style="margin-top:0;">
+                    <input type="date" id="input-meta-fecha">
+                    <button class="btn-action" style="margin:0; padding:10px; white-space: nowrap;" onclick="agregarMetaFutura()">📅 Añadir Meta</button>
+                </div>
+            </div>
+            <div class="dinamic-list-container" id="lista-metas-dinamica" style="max-height: 200px;"></div>
+        </div>
+
+        <!-- 6. PESTAÑA: FOTOS -->
+        <div id="fotos" class="tab-content">
+            <h3 style="margin-top:0;">Nuestro Álbum de Recuerdos 📸</h3>
+            <p style="font-size:14px;">Agrega fotos desde tu equipo. ¡Se guardarán de manera automática! 💾</p>
+            <input type="file" id="input-fotos-album" accept="image/*" multiple onchange="inyectarImagenesAlbum()">
+            <div class="photo-gallery" id="visor-galeria-fotos"></div>
+        </div>
+
+        <!-- 7. PESTAÑA: OUTFITS -->
+        <div id="outfits" class="tab-content">
+            <h3 style="margin-top:0;">Armador de Outfits Inteligente 👗✨</h3>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                <label style="font-size:13px; font-weight:bold;">Prenda:</label>
+                <select id="select-grupo-ropa" style="width:180px; margin:0;">
+                    <option value="arriba">👕 Superior</option>
+                    <option value="abajo">👖 Inferior</option>
+                    <option value="zapatos">👟 Calzado</option>
+                    <option value="accesorio">👜 Accesorio</option>
+                </select>
+                <input type="file" id="input-prenda-imagen" accept="image/*" style="width:auto; margin:0; padding:5px;">
+                <button class="btn-action" style="margin:0; padding:8px 12px;" onclick="registrarPrendaNueva()">📷 Agregar</button>
+            </div>
+            <div class="wardrobe-list" id="log-prendas-almacenadas">El armario virtual está vacío.</div>
+            <button class="btn-action" onclick="procesarOutfitAleatorio()">✨ ¡Armar outfit!</button>
+            <div class="outfit-grid">
+                <div class="outfit-card">
+                    <img id="slot-outfit-arriba" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><rect width='100' height='100' fill='%23fff8fb'/><text x='50%' y='60%' font-size='35' text-anchor='middle'>👕</text></svg>">
+                    <div class="outfit-label">Superior</div>
+                </div>
+                <div class="outfit-card">
+                    <img id="slot-outfit-abajo" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><rect width='100' height='100' fill='%23fff8fb'/><text x='50%' y='60%' font-size='35' text-anchor='middle'>👖</text></svg>">
+                    <div class="outfit-label">Inferior</div>
+                </div>
+                <div class="outfit-card">
+                    <img id="slot-outfit-zapatos" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><rect width='100' height='100' fill='%23fff8fb'/><text x='50%' y='60%' font-size='35' text-anchor='middle'>👟</text></svg>">
+                    <div class="outfit-label">Calzado</div>
+                </div>
+                <div class="outfit-card">
+                    <img id="slot-outfit-accesorio" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><rect width='100' height='100' fill='%23fff8fb'/><text x='50%' y='60%' font-size='35' text-anchor='middle'>👜</text></svg>">
+                    <div class="outfit-label">Accesorio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. PESTAÑA: RULETA -->
+        <div id="ruleta" class="tab-content">
+            <h3>🎡 Ruleta Aleatoria de Decisiones y Citas</h3>
+            <p style="font-size:14px; margin:0;">Escriban opciones de planes para sortear:</p>
+            <div class="input-inline-group">
+                <input type="text" id="input-nueva-opcion-ruleta" placeholder="Ej: Noche de películas... 🎬">
+                <button class="btn-action" style="margin:0; padding:10px;" onclick="agregarElementoLista('ruleta')">✨ Añadir</button>
+            </div>
+            <div class="dinamic-list-container" id="lista-ruleta-dinamica" style="max-height: 140px;"></div>
+            <div class="display-box" id="caja-ruleta-resultado" style="font-weight:bold; border: 2px dashed var(--accent-color); margin-top:20px;">¿Qué plan haremos hoy? 🤔</div>
+            <button class="btn-action" onclick="comenzarGiroRuleta()">🎰 Girar la Ruleta</button>
+        </div>
+
+        <!-- 9. PESTAÑA: V O R -->
+        <div id="vor" class="tab-content">
+            <h3 style="text-align: center;">🎲 Juego Dinámico: ¿Verdad o Reto?</h3>
+            <div class="display-box" id="caja-juego-vor" style="min-height:60px;">¡Elige una opción para desafiarnos! 👇</div>
+            <div style="display: flex; gap:15px;">
+                <button class="btn-action" style="margin-top:0; width:50%;" onclick="mostrarRetoVerdad('verdad')">🤔 Verdad</button>
+                <button class="btn-action" style="margin-top:0; width:50%; background-color:#ff6fa8;" onclick="mostrarRetoVerdad('reto')">🔥 Reto</button>
+            </div>
+        </div>
+
+        <!-- 10. PESTAÑA: DESEOS -->
+        <div id="deseos" class="tab-content">
+            <h3>🧜 Lista de Deseos por Cumplir Juntos</h3>
+            <p style="font-size:14px; margin:0;">Escribe un sueño o plan futuro que quieras que cumplamos juntos:</p>
+            <div class="input-inline-group">
+                <input type="text" id="input-nuevo-deseo" placeholder="Ej: Viajar juntos a la playa... 🌊">
+                <button class="btn-action" style="margin:0; padding:10px;" onclick="agregarElementoLista('deseos')">✨ Añadir</button>
+            </div>
+            <div class="dinamic-list-container" id="lista-deseos-dinamica"></div>
+        </div>
+
+        <!-- 11. PESTAÑA: MOMENTOS -->
+        <div id="momentos" class="tab-content">
+            <h3>🍿 Nuestros Momentos Inolvidables</h3>
+            <p style="font-size:14px; margin:0;">Escribe un lindo recuerdo, una fecha o una anécdota especial de nosotros:</p>
+            <div class="input-inline-group">
+                <input type="text" id="input-nuevo-momento" placeholder="Ej: Nuestra primera salida por un helado... 🍦">
+                <button class="btn-action" style="margin:0; padding:10px;" onclick="guardarMensajeAlDiario(), agregarElementoLista('momentos')">❤️‍🩹 Añadir</button>
+            </div>
+            <div class="dinamic-list-container" id="lista-momentos-dinamica"></div>
+        </div>
+
+        <!-- 12. PESTAÑA: CANCIONES -->
+        <div id="canciones" class="tab-content">
+            <h3>🎵 Nuestra Playlist Especial</h3>
+            <p style="font-size:14px; margin:0;">Dedícame o escribe los nombres de las canciones que te recuerden a nosotros:</p>
+            <div class="input-inline-group">
+                <input type="text" id="input-nueva-cancion" placeholder="Ej: Perfect - Ed Sheeran 🎶">
+                <button class="btn-action" style="margin:0; padding:10px;" onclick="agregarElementoLista('canciones')">🎵 Añadir</button>
+            </div>
+            <div class="dinamic-list-container" id="lista-canciones-dinamica"></div>
+        </div>
+
+        <!-- 13. PESTAÑA: ÁNIMO -->
+        <div id="animo" class="tab-content">
+            <h3>☯️ ¿Cómo te sientes hoy, mi reina?</h3>
+            <select id="select-estado-animo" onchange="evaluarEstadoAnimoNovia()">
+                <option value="">-- Elige tu estado de ánimo actual --</option>
+                <option value="feliz">☀️ Feliz y Con Energía</option>
+                <option value="cansada">💤 Cansada o Agotada</option>
+                <option value="triste">🌧️ Un poco Triste / Nostálgica</option>
+                <option value="estresada">🔥 Estresada o Preocupada</option>
+                <option value="enamorada">❤️‍🩹 Muy Enamorada</option>
+            </select>
+            <div class="display-box" id="caja-respuesta-animo" style="color:#721c24; background-color:#f8d7da; border-color:#f5c6cb; margin-top:20px; font-size:16px;">
+                Selecciona arriba cómo va tu día para darte tu mensaje especial... ❤️‍🩹
+            </div>
+        </div>
+
+        <!-- 14. PESTAÑA: BESOS -->
+        <div id="besos" class="tab-content">
+            <h3 style="text-align: center;">🎲 El Dado Dinámico de los Besos</h3>
+            <p style="text-align: center; font-size:14px; margin:0;">¿No saben cómo darse un beso? ¡Dejen que el dado decida el juego! 👇</p>
+            <div class="dice-container">
+                <div class="dice" id="dado-visual-beso">🎲</div>
+            </div>
+            <div class="display-box" id="caja-resultado-beso" style="font-weight: bold; font-size: 20px;">¡Presiona el botón para lanzar el dado!</div>
+            <button class="btn-action" onclick="lanzarDadoBesosInteractivos()">🎲 Lanzar Dado</button>
+        </div>
+
+        <!-- 15. PESTAÑA: SORPRESA (MODIFICADO: AHORA EDITABLE) -->
+        <div id="sorpresa" class="tab-content">
+            <h3>🎁 Caja Sorpresa Personalizable</h3>
+            <p style="font-size:14px; margin:0;">Escribe los "Vales por..." o premios sorpresa que ella podrá ganar:</p>
+            
+            <div class="input-inline-group">
+                <input type="text" id="input-nueva-sorpresa" placeholder="Ej: Vale por un masaje relajante... 💆‍♀️">
+                <button class="btn-action" style="margin:0; padding:10px;" onclick="agregarElementoLista('sorpresas')">✨ Añadir</button>
+            </div>
+            
+            <div class="dinamic-list-container" id="lista-sorpresas-dinamica" style="max-height: 140px;"></div>
+
+            <div style="font-size: 50px; text-align: center; margin: 20px 0 10px 0;" id="sorpresa-emoji">🎁</div>
+            <div class="display-box" id="resultado-sorpresa" style="display: none; font-weight: bold; border: 2px dashed var(--accent-color);"></div>
+            <button class="btn-action" onclick="darSorpresa()">¡Abrir mi Sorpresa! 🎊</button>
+        </div>
+
+    </div>
+
+    <!-- FIRMA DEL CREADOR -->
+    <footer>
+        Creado con amor por Joel Santiago Carreño Vargas ❤️‍🩹
+    </footer>
+
+    <script>
+        const FECHA_ORIGEN = new Date("2024-08-18T00:00:00");
+
+        const BASE_MENSAJES = [
+            "Cada día contigo es mi favorito 💕",
+            "Eres la razón de mi sonrisa ☀️",
+            "Me haces ser mejor persona 🌸",
+            "Tu risa es mi canción favorita 🎵",
+            "Gracias por existir en mi vida 🌹",
+            "Eres mi lugar favorito en el mundo 🏡",
+            "Te quiero más de lo que las palabras pueden decir 💖"
+        ];
+
+        const BASE_VERDADES = [
+            "¿Cuál es tu recuerdo favorito de nosotros dos?",
+            "¿Qué pequeño detalle diario mío te alegra el día?",
+            "¿Qué pensaste de mí en nuestra primera cita?",
+            "¿Cuál consideras que ha sido nuestra mejor salida?"
+        ];
+
+        const BASE_RETOS = [
+            "Dale un beso larguísimo en la mejilla a tu novio ahora mismo concienzudamente 😘",
+            "Dile 3 cosas que te encantan de él mirándolo fijamente a los ojos.",
+            "Haz una imitación graciosa de cómo habla él cuando está emocionado.",
+            "Dale un abrazo fuerte de 10 segundos sin soltarlo para nada."
+        ];
+
+        const BASE_BESOS_DADO = [
+            "💋 ¡Beso en la frente! (Tierno y protector)",
+            "💋 ¡Beso Esquimal! (Frotar las narices tiernamente)",
+            "💋 ¡Beso Francés / Apasionado! (Fuego total 🔥)",
+            "💋 ¡Beso Robado! (Sorpréndelo cuando no esté mirando)",
+            "💋 ¡Beso en la mejilla con abrazo fuerte!",
+            "💋 ¡Beso de piquito séptuple! (7 besos rápidos seguidos)"
+        ];
+
+        // Respuestas por defecto si la lista interactiva de sorpresas queda vacía
+        const BASE_SORPRESAS_DEFECTO = [
+            "Vale por un masaje relajante completo cuando quieras 💆‍♀️",
+            "Vale por tu comida favorita pagada por mí 🍔",
+            "Vale por una salida al cine a ver la película que elijas 🍿",
+            "Vale por una tarde entera de mimos ilimitados sin protestar 🥰"
+        ];
+
+        const CARTA_POR_DEFECTO = `Mi reina hermosa,\n\nEscribo esto porque a veces las palabras en vivo se me quedan cortas para expresar todo lo que causas en mí. Desde que entraste a mi vida, transformaste mis días comunes en momentos llenos de alegría, ilusión y un norte claro.\n\nAmo tu risa, admiro tu forma de ver el mundo, y valoro infinitamente cada segundo que compartimos. Gracias por ser mi apoyo, mi confidente y mi compañera ideal.\n\nQuiero que este pequeño espacio sea un recordatorio constante de que mi corazón está completamente contigo. Te adoro hoy más que ayer. ❤️‍🩹`;
+
+        // Memoria Persistente Local
+        let bancoFotosMemoria = JSON.parse(localStorage.getItem("bancoFotos")) || [];
+        let armarioPrendasMemoria = JSON.parse(localStorage.getItem("armarioPrendas")) || [];
+        
+        let listaDeseos = JSON.parse(localStorage.getItem("listaDeseos")) || [];
+        let listaMomentos = JSON.parse(localStorage.getItem("listaMomentos")) || [];
+        let listaCanciones = JSON.parse(localStorage.getItem("listaCanciones")) || [];
+        let listaRuleta = JSON.parse(localStorage.getItem("listaRuleta")) || [];
+        let listaMetas = JSON.parse(localStorage.getItem("listaMetas")) || [];
+        let listaSorpresas = JSON.parse(localStorage.getItem("listaSorpresas")) || [];
+        
+        let indexMsgInterno = 0;
+
+        // --- MANEJO DE LA CARTA DINÁMICA ---
+        function inicializarCartaAmor() {
+            const cartaGuardada = localStorage.getItem("cartaAmorDinamica") || CARTA_POR_DEFECTO;
+            document.getElementById("vista-carta-amor").innerText = cartaGuardada;
+            document.getElementById("textarea-carta-editable").value = cartaGuardada;
+        }
+
+        function guardarCartaDelDia() {
+            const textoNuevo = document.getElementById("textarea-carta-editable").value.trim();
+            if(!textoNuevo) {
+                alert("¡No dejes la carta vacía! Escríbele algo lindo. 🌹");
+                return;
+            }
+            localStorage.setItem("cartaAmorDinamica", textoNuevo);
+            document.getElementById("vista-carta-amor").innerText = textoNuevo;
+            alert("¡Carta del día actualizada correctamente! 💍");
+        }
+
+        // --- MANEJO DE LISTAS DINÁMICAS INTERACTIVAS ---
+        function agregarElementoLista(tipo) {
+            let inputId, arreglo, storageKey;
+            
+            if (tipo === 'deseos') { inputId = "input-nuevo-deseo"; arreglo = listaDeseos; storageKey = "listaDeseos"; }
+            if (tipo === 'momentos') { inputId = "input-nuevo-momento"; arreglo = listaMomentos; storageKey = "listaMomentos"; }
+            if (tipo === 'canciones') { inputId = "input-nueva-cancion"; arreglo = listaCanciones; storageKey = "listaCanciones"; }
+            if (tipo === 'ruleta') { inputId = "input-nueva-opcion-ruleta"; arreglo = listaRuleta; storageKey = "listaRuleta"; }
+            if (tipo === 'sorpresas') { inputId = "input-nueva-sorpresa"; arreglo = listaSorpresas; storageKey = "listaSorpresas"; }
+            
+            const inputElement = document.getElementById(inputId);
+            const valor = inputElement.value.trim();
+            
+            if (!valor) {
+                alert("¡No puedes agregar un campo vacío! 😊");
+                return;
+            }
+            
+            arreglo.push(valor);
+            localStorage.setItem(storageKey, JSON.stringify(arreglo));
+            inputElement.value = "";
+            pintarListasPersonalizadas(tipo);
+        }
+
+        function eliminarElementoLista(tipo, index) {
+            let arreglo, storageKey;
+            
+            if (tipo === 'deseos') { arreglo = listaDeseos; storageKey = "listaDeseos"; }
+            if (tipo === 'momentos') { arreglo = listaMomentos; storageKey = "listaMomentos"; }
+            if (tipo === 'canciones') { arreglo = listaCanciones; storageKey = "listaCanciones"; }
+            if (tipo === 'ruleta') { arreglo = listaRuleta; storageKey = "listaRuleta"; }
+            if (tipo === 'sorpresas') { arreglo = listaSorpresas; storageKey = "listaSorpresas"; }
+            
+            arreglo.splice(index, 1);
+            localStorage.setItem(storageKey, JSON.stringify(arreglo));
+            pintarListasPersonalizadas(tipo);
+        }
+
+        function pintarListasPersonalizadas(tipo) {
+            let contenedorId, arreglo, prefijo;
+            
+            if (tipo === 'deseos') { contenedorId = "lista-deseos-dinamica"; arreglo = listaDeseos; prefijo = "🧜"; }
+            if (tipo === 'momentos') { contenedorId = "lista-momentos-dinamica"; arreglo = listaMomentos; prefijo = "🍿"; }
+            if (tipo === 'canciones') { contenedorId = "lista-canciones-dinamica"; arreglo = listaCanciones; prefijo = "🎵"; }
+            if (tipo === 'ruleta') { contenedorId = "lista-ruleta-dinamica"; arreglo = listaRuleta; prefijo = "🎡"; }
+            if (tipo === 'sorpresas') { contenedorId = "lista-sorpresas-dinamica"; arreglo = listaSorpresas; prefijo = "🎁"; }
+            
+            const contenedor = document.getElementById(contenedorId);
+            
+            if (arreglo.length === 0) {
+                contenedor.innerHTML = `<p style="text-align:center; color:gray; font-size:13px; margin:10px 0;">Lista vacía. ¡Escribe arriba para añadir! ✨</p>`;
+                return;
+            }
+            
+            contenedor.innerHTML = arreglo.map((item, index) => `
+                <div class="list-item-custom" style="padding:6px 10px; margin-bottom:5px;">
+                    <span style="font-size:14px;">${prefijo} ${item}</span>
+                    <button class="btn-delete-item" onclick="eliminarElementoLista('${tipo}', ${index})">✕</button>
+                </div>
+            `).join('');
+        }
+
+        // --- SISTEMA DE METAS INTERACTIVAS (PESTAÑA CUENTA) ---
+        function agregarMetaFutura() {
+            const txtMeta = document.getElementById("input-meta-nombre").value.trim();
+            const dateMeta = document.getElementById("input-meta-fecha").value;
+
+            if(!txtMeta || !dateMeta) {
+                alert("Por favor introduce el nombre del evento y su fecha correspondiente 📅");
+                return;
+            }
+
+            listaMetas.push({ nombre: txtMeta, fecha: dateMeta });
+            localStorage.setItem("listaMetas", JSON.stringify(listaMetas));
+            
+            document.getElementById("input-meta-nombre").value = "";
+            document.getElementById("input-meta-fecha").value = "";
+            pintarMetasFuturas();
+        }
+
+        function eliminarMetaFutura(index) {
+            listaMetas.splice(index, 1);
+            localStorage.setItem("listaMetas", JSON.stringify(listaMetas));
+            pintarMetasFuturas();
+        }
+
+        function pintarMetasFuturas() {
+            const contenedor = document.getElementById("lista-metas-dinamica");
+            if(listaMetas.length === 0) {
+                contenedor.innerHTML = `<p style="text-align:center; color:gray; font-size:14px; margin:10px 0;">No hay metas guardadas aún. ¡Añadan su próximo plan juntos!</p>`;
+                return;
+            }
+
+            const hoy = new Date();
+            hoy.setHours(0,0,0,0);
+
+            contenedor.innerHTML = listaMetas.map((m, index) => {
+                const fMeta = new Date(m.fecha + "T00:00:00");
+                const diffTime = fMeta - hoy;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                let textoDias = "";
+                if(diffDays === 0) {
+                    textoDias = "<b>¡ES HOY! 🎉❤️‍🩹</b>";
+                } else if(diffDays > 0) {
+                    textoDias = `Faltan <b>${diffDays}</b> días ⏳`;
+                } else {
+                    textoDias = `Pasó hace <b>${Math.abs(diffDays)}</b> días ✔️`;
+                }
+
+                return `
+                    <div class="list-item-custom" style="flex-direction: row; text-align: left;">
+                        <div>
+                            <span style="font-weight:bold; color:var(--accent-color);">${m.nombre}</span><br>
+                            <small style="opacity:0.8;">Fecha: ${m.fecha} | ${textoDias}</small>
+                        </div>
+                        <button class="btn-delete-item" onclick="eliminarMetaFutura(${index})">✕</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // --- ANIMACIONES GENERALES ---
+        function inicializarAnimacionTitulo() {
+            const lbl = document.getElementById("header-animated-title");
+            if(lbl) {
+                setInterval(() => {
+                    let txt = lbl.innerText;
+                    lbl.innerText = txt.includes("❤️‍🩹") ? "🌸 Para Mi Reina Hermosa 🌸" : "❤️‍🩹 Para Mi Reina Hermosa ❤️‍🩹";
+                }, 1200);
+            }
+        }
+
+        function inicializarPulsarContador() {
+            const lbl = document.getElementById("lbl-pulsar-dias");
+            if(lbl) {
+                setInterval(() => {
+                    lbl.style.color = lbl.style.color === "rgb(233, 30, 140)" ? "#ff69b4" : "#e91e8c";
+                }, 900);
+            }
+        }
+
+        // --- CONTADOR DE DÍAS GENERAL ---
+        function refrescarContadorCronos() {
+            const hoy = new Date();
+            const diffMilisegundos = Math.abs(hoy - FECHA_ORIGEN);
+            const diasDirectosTotales = Math.floor(diffMilisegundos / (1000 * 60 * 60 * 24));
+            
+            const elementoDias = document.getElementById("lbl-pulsar-dias");
+            if(elementoDias) elementoDias.innerText = diasDirectosTotales;
+
+            let anos = hoy.getFullYear() - FECHA_ORIGEN.getFullYear();
+            let meses = hoy.getMonth() - FECHA_ORIGEN.getMonth();
+            let dias = hoy.getDate() - FECHA_ORIGEN.getDate();
+
+            if (dias < 0) {
+                meses--;
+                dias += new Date(hoy.getFullYear(), hoy.getMonth(), 0).getDate();
+            }
+            if (meses < 0) {
+                anos--;
+                meses += 12;
+            }
+            const elementoDesglose = document.getElementById("lbl-desglose-calendario");
+            if(elementoDesglose) {
+                elementoDesglose.innerText = `✨ ${anos} año${anos!==1?'s':''} · ${meses} mes${meses!==1?'es':''} · ${dias} día${dias!==1?'s':''} ✨`;
+            }
+        }
+
+        // --- NAVEGACIÓN ---
+        function rutearPestana(evt, idDestino) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(idDestino).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function forzarSiguientePestana() {
+            const navs = Array.from(document.querySelectorAll('.tab-btn'));
+            const actual = navs.findIndex(b => b.classList.contains('active'));
+            const sig = (actual + 1) % navs.length;
+            navs[sig].click();
+        }
+
+        // --- MENSAJES ROTATIVOS ---
+        function rotarMensajeAmor() {
+            indexMsgInterno = (indexMsgInterno + 1) % BASE_MENSAJES.length;
+            const caja = document.getElementById("caja-mensajes-dinamica");
+            caja.style.background = "#e91e8c";
+            caja.style.color = "white";
+            
+            setTimeout(() => {
+                caja.style.background = "#fffbfd";
+                caja.style.color = "var(--accent-color)";
+                caja.innerText = BASE_MENSAJES[indexMsgInterno];
+            }, 150);
+        }
+
+        function guardarMensajeAlDiario() {
+            const txtArea = document.getElementById("input-texto-rapido");
+            const val = txtArea.value.trim();
+            if(!val) return; 
+            
+            let logsAnteriores = localStorage.getItem("txtDiarioPlano") || "";
+            const fechaStamp = new Date().toLocaleString('es-CO', { hour12: true });
+            
+            logsAnteriores += `\n ❤️‍🩹 ${fechaStamp}\n${val}\n------------------------------\n`;
+            localStorage.setItem("txtDiarioPlano", logsAnteriores);
+            txtArea.value = "";
+            renderizarTextoDiario();
+        }
+
+        function renderizarTextoDiario() {
+            const container = document.getElementById("contenedor-logs-diario");
+            const datos = localStorage.getItem("txtDiarioPlano");
+            if(datos && datos.trim()) {
+                container.innerText = datos;
+            } else {
+                container.innerText = "Aún no hay mensajes ❤️‍🩹\n¡Escribe algo en Mensajes!";
+            }
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function limpiarRegistrosDiario() {
+            if(confirm("¿Seguro que deseas reiniciar el diario de recuerdos?")) {
+                localStorage.removeItem("txtDiarioPlano");
+                renderizarTextoDiario();
+            }
+        }
+
+        // --- FOTOS ---
+        function inyectarImagenesAlbum() {
+            const input = document.getElementById("input-fotos-album");
+            if(input.files) {
+                Array.from(input.files).forEach(file => {
+                    const lector = new FileReader();
+                    lector.onload = function(e) {
+                        bancoFotosMemoria.push({ data: e.target.result, name: file.name });
+                        localStorage.setItem("bancoFotos", JSON.stringify(bancoFotosMemoria));
+                        pintarGaleriaVisual();
+                    };
+                    lector.readAsDataURL(file);
+                });
+            }
+        }
+
+        function pintarGaleriaVisual() {
+            const g = document.getElementById("visor-galeria-fotos");
+            if(bancoFotosMemoria.length === 0) {
+                g.innerHTML = `<p style="color:#c06090; grid-column:1/-1; text-align:center;">Agrega fotos 📷<br>¡Se guardan automáticamente! 💾</p>`;
+                return;
+            }
+            g.innerHTML = bancoFotosMemoria.map((f, i) => `
+                <div class="photo-item">
+                    <button class="btn-delete-photo" onclick="eliminarFotoAlbum(${i})">✕</button>
+                    <img src="${f.data}">
+                </div>
+            `).join('');
+        }
+
+        function eliminarFotoAlbum(index) {
+            if(confirm("¿Eliminar esta foto del álbum?")) {
+                bancoFotosMemoria.splice(index, 1);
+                localStorage.setItem("bancoFotos", JSON.stringify(bancoFotosMemoria));
+                pintarGaleriaVisual();
+            }
+        }
+
+        // --- OUTFITS ---
+        function registrarPrendaNueva() {
+            const tipoSel = document.getElementById("select-grupo-ropa").value;
+            const fileInp = document.getElementById("input-prenda-imagen");
+            
+            if(!fileInp.files || !fileInp.files[0]) {
+                alert("Selecciona una prenda 😊");
+                return;
+            }
+
+            const lector = new FileReader();
+            lector.onload = function(e) {
+                armarioPrendasMemoria.push({ tipo: tipoSel, data: e.target.result, nombre: fileInp.files[0].name });
+                localStorage.setItem("armarioPrendas", JSON.stringify(armarioPrendasMemoria));
+                fileInp.value = "";
+                pintarListaArmario();
+                alert("Prenda guardada 👗");
+            };
+            lector.readAsDataURL(fileInp.files[0]);
+        }
+
+        function pintarListaArmario() {
+            const b = document.getElementById("log-prendas-almacenadas");
+            if(armarioPrendasMemoria.length === 0) {
+                b.innerText = "El armario virtual está vacío.";
+                return;
+            }
+            b.innerHTML = armarioPrendasMemoria.map((p, i) => `
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding:3px 0;">
+                    <span><b>${p.tipo.toUpperCase()}:</b> ${p.nombre}</span>
+                    <span style="color:red; cursor:pointer; font-weight:bold;" onclick="eliminarPrendaArmario(${i})">🗑</span>
+                </div>
+            `).join('');
+        }
+
+        function eliminarPrendaArmario(i) {
+            armarioPrendasMemoria.splice(i, 1);
+            localStorage.setItem("armarioPrendas", JSON.stringify(armarioPrendasMemoria));
+            pintarListaArmario();
+        }
+
+        function procesarOutfitAleatorio() {
+            if(armarioPrendasMemoria.length < 2) {
+                alert("Agrega al menos 2 prendas 😊");
+                return;
+            }
+            const porGrupo = { arriba: [], abajo: [], zapatos: [], accesorio: [] };
+            armarioPrendasMemoria.forEach(p => { if(porGrupo[p.tipo]) porGrupo[p.tipo].push(p); });
+
+            const slots = ['arriba', 'abajo', 'zapatos', 'accesorio'];
+            let combinado = false;
+
+            slots.forEach(s => {
+                const imgSlot = document.getElementById(`slot-outfit-${s}`);
+                if(porGrupo[s].length > 0) {
+                    const pick = porGrupo[s][Math.floor(Math.random() * porGrupo[s].length)];
+                    imgSlot.src = pick.data;
+                    combinado = true;
+                }
+            });
+            if(!combinado) alert("Asegúrate de tener prendas en las categorías seleccionadas.");
+        }
+
+        // --- SISTEMA DINÁMICO DE RULETA ---
+        function comenzarGiroRuleta() {
+            const caja = document.getElementById("caja-ruleta-resultado");
+            
+            if(listaRuleta.length === 0) {
+                alert("¡Primero agreguen opciones de planes en la lista de arriba! 🍕🎬");
+                return;
+            }
+
+            let cont = 0;
+            const timer = setInterval(() => {
+                caja.innerText = `⏳ ${listaRuleta[Math.floor(Math.random() * listaRuleta.length)]}`;
+                cont++;
+                if(cont > 12) {
+                    clearInterval(timer);
+                    caja.innerText = `✨ ¡Salió: ${listaRuleta[Math.floor(Math.random() * listaRuleta.length)]}! ✨`;
+                }
+            }, 100);
+        }
+
+        function mostrarRetoVerdad(tipo) {
+            const caja = document.getElementById("caja-juego-vor");
+            const list = tipo === 'verdad' ? BASE_VERDADES : BASE_RETOS;
+            caja.innerText = list[Math.floor(Math.random() * list.length)];
+        }
+
+        function evaluarEstadoAnimoNovia() {
+            const ind = document.getElementById("select-estado-animo").value;
+            const caja = document.getElementById("caja-respuesta-animo");
+            
+            if(!ind) {
+                caja.innerText = "Selecciona arriba cómo va tu día para darte tu mensaje especial... ❤️";
+                return;
+            }
+
+            switch(ind) {
+                case "feliz": caja.innerText = "¡Me encanta verte así, mi reina! Tu felicidad ilumina mi mundo entero. ☀️🌸"; break;
+                case "cansada": caja.innerText = "Sé que trabajas y estudias durísimo, mi amor. Descansa un ratito y recuerda que estoy super orgulloso de ti. 💤❤️‍🩹"; break;
+                case "triste": caja.innerText = "Quisiera estar ahí para darte un abrazo rompe-costillas. Recuerda que eres lo más lindo que tengo. 🌧️❤️‍🩹"; break;
+                case "estresada": caja.innerText = "Respira profundo, amor. Todo va a salir bien, eres sumamente inteligente y capaz. ¡Tú puedes! 🔥🥰"; break;
+                case "enamorada": caja.innerText = "¡Yo estoy mil veces más enamorado de ti, mi monita hermosa! Gracias por existir. ❤️‍🩹"; break;
+            }
+        }
+
+        function lanzarDadoBesosInteractivos() {
+            const visualDado = document.getElementById("dado-visual-beso");
+            const txtResultado = document.getElementById("caja-resultado-beso");
+            let t = 0;
+            const anim = setInterval(() => {
+                visualDado.style.transform = `rotate(${Math.random() * 360}deg) scale(1.1)`;
+                t++;
+                if(t > 12) {
+                    clearInterval(anim);
+                    visualDado.style.transform = "rotate(0deg) scale(1)";
+                    txtResultado.innerText = BASE_BESOS_DADO[Math.floor(Math.random() * BASE_BESOS_DADO.length)];
+                }
+            }, 80);
+        }
+
+        // --- SISTEMA DINÁMICO DE SORPRESAS ---
+        function darSorpresa() {
+            const emoji = document.getElementById("sorpresa-emoji");
+            const resultado = document.getElementById("resultado-sorpresa");
+            resultado.style.display = "none";
+            
+            // Si tú no has agregado ninguna sorpresa, usa el banco por defecto
+            const fuenteSorpresas = listaSorpresas.length > 0 ? listaSorpresas : BASE_SORPRESAS_DEFECTO;
+
+            let count = 0;
+            const interval = setInterval(() => {
+                count++;
+                if (count > 6) {
+                    clearInterval(interval);
+                    resultado.textContent = fuenetSorpresas[Math.floor(Math.random() * fuenteSorpresas.length)];
+                    resultado.style.display = "flex";
+                }
+            }, 120);
+        }
+
+        function controlarMusicaGlobal() {
+            const r = document.getElementById("reproductor-core");
+            const inp = document.getElementById("input-audio-local");
+            const btn = document.getElementById("btn-audio-global");
+
+            if(!r.src) {
+                inp.click();
+                inp.onchange = function() {
+                    if(inp.files[0]) {
+                        r.src = URL.createObjectURL(inp.files[0]);
+                        r.play();
+                        btn.innerText = `🎵 En reproducción`;
+                    }
+                };
+            } else {
+                if(r.paused) { r.play(); btn.innerText = "🎵 Música ON"; } 
+                else { r.pause(); btn.innerText = "🎵 Música OFF"; }
+            }
+        }
+
+        function conmutarModoOscuro() { document.body.classList.toggle('dark-mode'); }
+
+        window.onload = function() {
+            inicializarAnimacionTitulo();
+            inicializarPulsarContador();
+            refrescarContadorCronos();
+            renderizarTextoDiario();
+            pintarGaleriaVisual();
+            pintarListaArmario();
+            inicializarCartaAmor();
+            
+            // Pintar todas las listas dinámicas locales
+            pintarListasPersonalizadas('deseos');
+            pintarListasPersonalizadas('momentos');
+            pintarListasPersonalizadas('canciones');
+            pintarListasPersonalizadas('ruleta');
+            pintarListasPersonalizadas('sorpresas');
+            pintarMetasFuturas();
+            
+            setInterval(refrescarContadorCronos, 60000);
+        };
+    </script>
+</body>
+</html>
